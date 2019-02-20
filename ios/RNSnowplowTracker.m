@@ -11,8 +11,6 @@
 
 @implementation RNSnowplowTracker
 
-@synthesize tracker = _tracker;
-
 - (dispatch_queue_t)methodQueue
 {
     return dispatch_get_main_queue();
@@ -21,19 +19,16 @@
 RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(initialize:(NSDictionary *)options) {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        SPEmitter *emitter = [SPEmitter build:^(id<SPEmitterBuilder> builder) {
-            [builder setUrlEndpoint:options[@"endpoint"]];
-            [builder setHttpMethod:[options[@"httpMethod"] isEqualToString:@"POST"] ? SPRequestPost : SPRequestGet];
-            [builder setProtocol:[options[@"protocol"] isEqualToString:@"https"] ? SPHttps : SPHttp];
-        }];
-        self.tracker = [SPTracker build:^(id<SPTrackerBuilder> builder) {
-            [builder setEmitter:emitter];
-            [builder setAppId:options[@"appId"]];
-            [builder setTrackerNamespace:options[@"namespace"]];
-        }];
-    });
+    SPEmitter *emitter = [SPEmitter build:^(id<SPEmitterBuilder> builder) {
+        [builder setUrlEndpoint:options[@"endpoint"]];
+        [builder setHttpMethod:[options[@"httpMethod"] isEqualToString:@"POST"] ? SPRequestPost : SPRequestGet];
+        [builder setProtocol:[options[@"protocol"] isEqualToString:@"https"] ? SPHttps : SPHttp];
+    }];
+    self.tracker = [SPTracker build:^(id<SPTrackerBuilder> builder) {
+        [builder setEmitter:emitter];
+        [builder setAppId:options[@"appId"]];
+        [builder setTrackerNamespace:options[@"namespace"]];
+    }];
 }
 
 RCT_EXPORT_METHOD(trackStructEvent:(NSDictionary *)options) {
