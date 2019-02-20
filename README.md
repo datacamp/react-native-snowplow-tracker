@@ -31,7 +31,7 @@ Install the native Snowplow Tracker in your project by following the official in
 2. Append the following lines to `android/settings.gradle`:
   	```
   	include ':@datacamp_react-native-snowplow-tracker'
-  	project(':@datacamp_react-native-snowplow-tracker').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-snowplow-tracker/android')
+  	project(':@datacamp_react-native-snowplow-tracker').projectDir = new File(rootProject.projectDir, 	'../node_modules/@datacamp/react-native-snowplow-tracker/android')
   	```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
   	```
