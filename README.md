@@ -1,13 +1,17 @@
 
-# react-native-snowplow-tracker
+# @datacamp/react-native-snowplow-tracker
+
+Please note this currently only binds very basic tracker features.
 
 ## Getting started
 
-`$ npm install react-native-snowplow-tracker --save`
+Install the native Snowplow Tracker in your project by following the official instructions [[iOS](https://github.com/snowplow/snowplow/wiki/iOS-Tracker)/[Android](https://github.com/snowplow/snowplow/wiki/Android-Tracker)].
+
+`$ npm install @datacamp/react-native-snowplow-tracker --save`
 
 ### Mostly automatic installation
 
-`$ react-native link react-native-snowplow-tracker`
+`$ react-native link @datacamp/react-native-snowplow-tracker`
 
 ### Manual installation
 
@@ -22,32 +26,38 @@
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.reactlibrary.RNSnowplowTrackerPackage;` to the imports at the top of the file
+  - Add `import com.snowplow.RNSnowplowTrackerPackage;` to the imports at the top of the file
   - Add `new RNSnowplowTrackerPackage()` to the list returned by the `getPackages()` method
 2. Append the following lines to `android/settings.gradle`:
   	```
-  	include ':react-native-snowplow-tracker'
-  	project(':react-native-snowplow-tracker').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-snowplow-tracker/android')
+  	include ':@datacamp_react-native-snowplow-tracker'
+  	project(':@datacamp_react-native-snowplow-tracker').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-snowplow-tracker/android')
   	```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
   	```
-      compile project(':react-native-snowplow-tracker')
+      implementation project(':@datacamp_react-native-snowplow-tracker')
   	```
-
-#### Windows
-[Read it! :D](https://github.com/ReactWindows/react-native)
-
-1. In Visual Studio add the `RNSnowplowTracker.sln` in `node_modules/react-native-snowplow-tracker/windows/RNSnowplowTracker.sln` folder to their solution, reference from their app.
-2. Open up your `MainPage.cs` app
-  - Add `using Snowplow.Tracker.RNSnowplowTracker;` to the usings at the top of the file
-  - Add `new RNSnowplowTrackerPackage()` to the `List<IReactPackage>` returned by the `Packages` method
-
 
 ## Usage
 ```javascript
-import RNSnowplowTracker from 'react-native-snowplow-tracker';
+import Snowplow from 'react-native-snowplow-tracker';
 
-// TODO: What to do with the module?
-RNSnowplowTracker;
+// Initialize
+Snowplow.initialize({
+  endpoint: 'com.acme.net',
+  protocol: 'https',
+  httpMethod: 'POST',
+  namespace: 'your-namespace',
+  appId: 'your-app',
+})
+
+// Track structured events
+Snowplow.trackStructEvent({
+    category: 'shop',
+    action: 'add-to-basket',
+    label: 'Add To Basket',
+    property: 'pcs',
+    value: 2.0,
+})
 ```
   
