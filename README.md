@@ -40,7 +40,7 @@ Install the native Snowplow Tracker in your project by following the official in
 
 ## Usage
 ```javascript
-import Snowplow from 'react-native-snowplow-tracker';
+import Snowplow from '@datacamp/react-native-snowplow-tracker';
 
 // Initialize
 Snowplow.initialize({
