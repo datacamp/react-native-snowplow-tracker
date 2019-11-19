@@ -1,6 +1,6 @@
 {
   "name": "@datacamp/react-native-snowplow-tracker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Snowplow bindings for React Native",
   "homepage": "https://www.datacamp.com",
   "main": "index.js",
