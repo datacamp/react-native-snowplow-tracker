@@ -1,8 +1,10 @@
 {
   "name": "@datacamp/react-native-snowplow-tracker",
   "version": "1.0.0",
-  "description": "",
+  "description": "Snowplow bindings for React Native",
+  "homepage": "https://www.datacamp.com",
   "main": "index.js",
+  "author": "DataCamp",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
