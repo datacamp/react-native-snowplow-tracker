@@ -1,6 +1,10 @@
 
 # @datacamp/react-native-snowplow-tracker
 
+## DEPRECATED
+
+These bindings are no longer supported. Please use the official [Snowplow React Native bindings](https://github.com/snowplow-incubator/snowplow-react-native-tracker).
+
 Please note this currently only binds very basic tracker features.
 
 ## Getting started
